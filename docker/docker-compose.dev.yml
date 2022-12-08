@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  house_canary_data_fetcher_server:
+    container_name: house_canary_data_fetcher_server
+    build:
+      context: ..
+      dockerfile: docker/dockerfiles/server.Dockerfile
+    ports:
+      - '5555:5000'
+    volumes:
+      - ..:/home/house_canary_data_fetcher/project
+    env_file: envs/env.dev
+    command: flask run
